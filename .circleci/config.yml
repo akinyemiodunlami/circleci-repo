@@ -39,7 +39,9 @@ jobs:
             - yarn-packages-v1-{{ .Branch }}-
             - yarn-packages-v1-
 
-      - run: yarn install
+      - run: 
+          name: Installing dependencies
+          command: yarn install
 
       - save_cache:
           paths:
@@ -52,7 +54,7 @@ jobs:
       
       - run:
           name: Running eslint
-          command: eslint ./src/ --format junit --output-file ~/reports/eslint.xml
+          command: ./node_modules/.bin/eslint ./src/ --format junit --output-file ~/reports/eslint.xml
 
       # run tests!
       - run: 
