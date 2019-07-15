@@ -1,0 +1,29 @@
+{
+  "name": "circleci-repo",
+  "version": "1.0.0",
+  "description": "testing circleci integration",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha",
+    "test-coverage": "nyc --reporter text npm test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/akinyemiodunlami/circleci-repo.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/akinyemiodunlami/circleci-repo/issues"
+  },
+  "homepage": "https://github.com/akinyemiodunlami/circleci-repo#readme",
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "mocha": "^6.1.4",
+    "npm": "^6.10.1",
+    "yarn": "^1.17.3"
+  },
+  "dependencies": {
+    "lodash": "^4.17.14"
+  }
+}
