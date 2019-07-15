@@ -11,9 +11,11 @@
   },
   "devDependencies": {
     "chai": "^4.2.0",
-    "mocha": "^6.1.4"
+    "mocha": "^6.1.4",
+    "nyc": "^14.1.1"
   },
   "scripts": {
-    "test": "mocha"
+    "test": "mocha",
+    "test-coverage": "nyc --reporter text yarn test"
   }
 }
