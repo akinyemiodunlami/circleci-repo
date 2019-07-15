@@ -34,16 +34,17 @@ jobs:
       # Download and cache dependencies
       - restore_cache:
           keys:
-            - node-v1-dependencies-{{ checksum "yarn.lock" }}
+            - yarn-packages-v1-{{ .Branch }}-{{ checksum "yarn.lock" }}
             # fallback to using the latest cache if no exact match is found
-            - node-v1-dependencies-
-
+            - yarn-packages-v1-{{ .Branch }}-
+            - yarn-packages-v1-
+              
       - run: yarn install
 
       - save_cache:
           paths:
-            - node_modules
-          key: node-v1-dependencies-{{ checksum "yarn.lock" }}
+            - ~/.cache/yarn
+          key: yarn-packages-v1-{{ .Branch }}-{{ checksum "yarn.lock" }}
 
       # run tests!
       - run: yarn test-coverage
