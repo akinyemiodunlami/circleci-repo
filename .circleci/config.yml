@@ -51,8 +51,8 @@ jobs:
           command: mkdir reports
       
       - run:
-        name: Running eslint
-        command: eslint ./src/ --format junit --output-file ~/reports/eslint.xml
+          name: Running eslint
+          command: eslint ./src/ --format junit --output-file ~/reports/eslint.xml
 
       # run tests!
       - run: 
