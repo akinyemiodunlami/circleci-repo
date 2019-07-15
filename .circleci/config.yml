@@ -35,3 +35,7 @@ jobs:
 
       # run tests!
       - run: yarn test-coverage
+
+      - run:
+          name: "What branch am i on?"
+          command: echo ${CIRCLE_BRANCH}
