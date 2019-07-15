@@ -38,7 +38,7 @@ jobs:
             # fallback to using the latest cache if no exact match is found
             - yarn-packages-v1-{{ .Branch }}-
             - yarn-packages-v1-
-              
+
       - run: yarn install
 
       - save_cache:
@@ -47,7 +47,15 @@ jobs:
           key: yarn-packages-v1-{{ .Branch }}-{{ checksum "yarn.lock" }}
 
       # run tests!
-      - run: yarn test-coverage
+      # - run: yarn test-coverage
+      
+      - run: mkdir reports
+      
+      # Run mocha
+      - run:
+          name: npm test
+          command: ./node_modules/.bin/nyc ./node_modules/.bin/mocha --recursive --timeout=10000 --exit --reporter mocha-junit-reporter --reporter-options mochaFile=reports/mocha/test-results.xml
+          when: always
 
       - run:
           name: "What branch am i on?"
