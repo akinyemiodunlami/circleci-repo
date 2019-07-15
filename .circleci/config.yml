@@ -47,13 +47,15 @@ jobs:
           key: yarn-packages-v1-{{ .Branch }}-{{ checksum "yarn.lock" }}
 
       # run tests!
-      - run: yarn test
+      - run: 
+          name: unit tests
+          command: yarn test
       
       - run: mkdir reports
       
       # Run mocha
       - run:
-          name: npm test
+          name: test coverage
           command: ./node_modules/.bin/nyc ./node_modules/.bin/mocha --recursive --timeout=10000 --exit --reporter mocha-junit-reporter --reporter-options mochaFile=reports/mocha/test-results.xml
           when: always
       
