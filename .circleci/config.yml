@@ -56,7 +56,14 @@ jobs:
           name: npm test
           command: ./node_modules/.bin/nyc ./node_modules/.bin/mocha --recursive --timeout=10000 --exit --reporter mocha-junit-reporter --reporter-options mochaFile=reports/mocha/test-results.xml
           when: always
+      
+      # Upload results
+      - store_test_results:
+          path: reports
 
+      - store_artifacts:
+          path: ./reports/mocha/test-results.xml
+          
       - run:
           name: "What branch am i on?"
           command: echo ${CIRCLE_BRANCH}
